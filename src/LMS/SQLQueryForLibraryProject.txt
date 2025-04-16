@@ -1,0 +1,159 @@
+-- Creating Database
+CREATE SCHEMA `Student_Management_System`;
+
+-- Creating Table (student_data)
+CREATE TABLE `Student_Management_System`.`student_data`(
+`ID` varchar(45) not null,
+`First_Name` varchar(100) not null,
+`Last_Name` varchar(100) not null,
+`Father_Name` varchar(100) null,
+`Sex` varchar(20) null,
+`Phone` varchar(45) null,
+`Date_of_Birth` varchar(45) null,
+`Address` varchar(500) not null,
+`Image` longblob null,
+primary key (`ID`));
+
+-- Create Table (Password)
+CREATE TABLE `student_management_system`.`password`(
+`ID` int not null auto_increment,
+`Password` varchar(200) null ,
+`Email` varchar(200) null,
+`Question` varchar(200) null,
+`Answer` varchar(200) null,
+`Status` varchar(20) null,
+primary key (`id`));
+
+-- Creating Table (Academy)
+CREATE TABLE `Student_Management_System`.`Academy`(
+`ID` int not null auto_increment,
+`Academy` varchar(200) not null,
+primary key(`id`));
+
+-------------------------------------------------------------------new-----------------------
+CREATE TABLE `password`(
+`ID` int not null auto_increment,
+`Password` varchar(200) null ,
+`Email` varchar(200) null,
+`Question` varchar(200) null,
+`Answer` varchar(200) null,
+`Status` varchar(20) null,
+primary key (`id`));
+
+CREATE TABLE GENERAL_SETTINGS (
+    ID INT NOT NULL PRIMARY KEY,
+    `SET` VARCHAR(255) NOT NULL,
+    `SET2` VARCHAR(255),
+    `SET3` VARCHAR(255),
+    `VALUE` VARCHAR(255),
+    `DESCRIPTION` TEXT NOT NULL
+);
+
+
+CREATE TABLE LMS.ACADEMY (
+    ID INT NOT NULL,
+    ACADEMY VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE HISTORY (
+    id INT AUTO_INCREMENT,
+    Student_ID VARCHAR(50) NOT NULL,
+    Student_Name VARCHAR(100) NOT NULL,
+    category VARCHAR(50),
+    Book_ID VARCHAR(50) NOT NULL,
+    Book_Name VARCHAR(255) NOT NULL,
+    author VARCHAR(100),
+    Issue_Date DATE NOT NULL,
+    Last_Date DATE NOT NULL,
+    fine_id VARCHAR(50),
+    Returned_Date DATE,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE RESERVE_BOOK (
+    student_id VARCHAR(50) NOT NULL,
+    book_id VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE issue_book (
+    book_id VARCHAR(50) NOT NULL,
+    student_id VARCHAR(50) NOT NULL,
+    issue_date DATE NOT NULL,
+    return_date DATE
+);
+
+CREATE TABLE student_data (
+    id INT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    sex VARCHAR(10),
+    phone VARCHAR(20),
+    address VARCHAR(255),
+    Image longblob null,
+    Father_Name VARCHAR(100),
+    CLEARED_DATE DATE NULL,
+    `group` VARCHAR(50),
+    `Email` VARCHAR(100),
+    `status` VARCHAR(20)
+);
+
+
+CREATE TABLE FINE (
+    id INT,
+    STUDENT_ID VARCHAR(50),
+    BOOK_ID VARCHAR(50),
+    PURPOSE VARCHAR(100),
+    DATE DATE,
+    FINE DECIMAL(10,2),
+    STATUS VARCHAR(20),
+    DESCRIPTION TEXT,
+    last_date DATE NULL,
+    Pay_date DATE NULL
+);
+
+
+CREATE TABLE email_settings (
+    autoEmail1 VARCHAR(255),
+    autoemail2 VARCHAR(255),
+    autoemail3 VARCHAR(255),
+    autoemail4 VARCHAR(255),
+    Email VARCHAR(255),
+    `password` VARCHAR(255),
+    ID INT
+);
+
+
+CREATE TABLE EMAIL (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Sender VARCHAR(255) NOT NULL,
+    member_ID VARCHAR(50) NOT NULL,
+    Receiver VARCHAR(255) NOT NULL,
+    email TEXT NOT NULL,
+    `STATUS` VARCHAR(20) DEFAULT 'Unread',
+    purpose VARCHAR(100),
+    `date` DATE NOT NULL,
+    `time` TIME NOT NULL
+);
+
+
+
+CREATE TABLE lms.book (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    subject VARCHAR(100),
+    publisher VARCHAR(100),
+    edition VARCHAR(20),
+    language VARCHAR(50) DEFAULT 'English',
+    price DECIMAL(10,2),
+    currency VARCHAR(3) DEFAULT 'USD',
+    place VARCHAR(100),
+    pages INT,
+    keyword VARCHAR(255),
+    ISBN VARCHAR(20) UNIQUE,
+    status VARCHAR(20) DEFAULT 'Available',
+    `group` VARCHAR(50),
+    date DATE,
+    frontImage LONGBLOB NULL,
+    backImage LONGBLOB NULL
+);
